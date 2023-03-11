@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import ProductList from "./components/ProductList";
+import Footer from "./components/Footer";
 
 function App() {
+  const product = [
+    {
+      price: 6969,
+      name: "macBook",
+      quantity: 0,
+    },
+    {
+      price: 69696,
+      name: "macBook air2",
+      quantity: 0,
+    },
+    {
+      price: 69699,
+      name: "macBook air1",
+      quantity: 0,
+    },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* to pass a variable in a component we have to use props, props are read only type */}
+      <Navbar />
+      <ProductList product={product} />
+      <Footer />
+    </>
   );
 }
 
