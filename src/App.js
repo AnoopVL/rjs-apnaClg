@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList";
@@ -25,14 +24,32 @@ function App() {
       quantity: 0,
     },
   ];
-  //let [productList, setProductList] = useState([productList]);
+  let [productList, setProductList] = useState(Product);
+
+  const incrementQuantity = (index) => {
+    let newProductList = [...productList];
+    newProductList[index].quantity++;
+    setProductList(newProductList);
+  };
+
+  const decrementQuantity = (index) => {
+    let newProductList = [...productList];
+    newProductList[index].quantity > 0
+      ? newProductList[index].quantity--
+      : newProductList[index].quantity;
+    setProductList(newProductList);
+  };
   return (
     <>
       {/* to pass a variable in a component we have to use props, props are read only type */}
       <Navbar />
       {/* <ProductList ProductList={ProductList} /> */}
       <main className="container mt-5">
-        <ProductList productList={productList} />
+        <ProductList
+          productList={productList}
+          incrementQuantity={incrementQuantity}
+          decrementQuantity={decrementQuantity}
+        />
       </main>
       {/* <Footer /> */}
       <Product />
